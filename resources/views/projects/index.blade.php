@@ -15,14 +15,29 @@
                                     <div class="card-body p-0">
                                         <div class="d-flex align-items-center">
                                             <div class="p-5">
+                                                
                                                 <h2 class="fw-bolder">{{$elem->title}}</h2>
                                                 <p>{{$elem->description}}</p>
+
+                                                <div class="mb-1"> 
+                                                    <a class="btn btn-primary" href="{{ route('admin.project.show', $elem )}}">Show</a>
+                                                </div>
+
+                                                <a class="btn btn-warning mb-1" href="{{ route('admin.project.edit', $elem) }}">Edit</a>
+
+                                                <form action=" {{ route('admin.project.destroy', $elem) }} " method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button onclick="return confirm('vuoi davvero cancellare il progetto?')" class="btn btn-danger" type="submit">Delete</button>
+                                                </form>
                                             </div>
                                             <img class="img-fluid" src="https://dummyimage.com/300x400/343a40/6c757d" alt="..." />
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
+
+                            <a class="btn btn-primary" href="{{ route('admin.project.create', $elem )}}">Add one Project</a>
                             
 
                         </div>

@@ -48,7 +48,7 @@
                             <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.project.index') }}">Projects</a>
+                            <a class="nav-link" href="{{ url('/projects') }}">Projects</a>
                         </li>
                         @guest
                         <li class="nav-item">
@@ -68,6 +68,7 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
                                 <a class="dropdown-item" href="{{ url('admin/profile') }}">{{__('Profile')}}</a>
+                                <a class="dropdown-item" href="{{ route('admin.project.index') }}">{{__('Edit Projects')}}</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}

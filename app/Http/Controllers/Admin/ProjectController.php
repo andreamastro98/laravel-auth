@@ -27,7 +27,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('projects.create');
     }
 
     /**
@@ -38,7 +38,26 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'title' => 'required',
+            ],
+            [
+                'title.required' => 'Il campo Title é richiesto',
+            ]
+        );
+
+        $form_data = $request->all();
+
+        $slug = Project::generateSlug($request->title);
+
+        $form_data['slug'] = $slug;
+
+        $newProject = new Project();
+        $newProject->fill($form_data);
+        $newProject->save();
+
+        return redirect()->route('admin.project.index');
     }
 
     /**
@@ -47,9 +66,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Project $project)
     {
-        //
+        return view('projects.show', compact('project'));
     }
 
     /**
@@ -58,9 +77,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -70,9 +89,26 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $request->validate(
+            [
+                'title' => 'required',
+            ],
+            [
+                'title.required' => 'Il campo Title é richiesto',
+            ]
+        );
+
+        $form_data = $request->all();
+
+        $slug = Project::generateSlug($request->title);
+
+        $form_data['slug'] = $slug;
+
+        $project->update($form_data);
+
+        return redirect()->route('admin.project.index');
     }
 
     /**
@@ -81,8 +117,10 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return redirect()->route('admin.project.index');
     }
 }
