@@ -7,6 +7,7 @@ use App\Models\Admin\Project;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -54,6 +55,15 @@ class ProjectController extends Controller
         $slug = Project::generateSlug($request->title);
 
         $form_data['slug'] = $slug;
+
+        if ($request->hasFile('cover_image')) {
+
+            //Genere un path di dove verrà salvata l'immagine nel progetto
+            $path = Storage::disk('public')->put('project_images', $request->cover_image);
+
+            $form_data['cover_image'] = $path;
+
+        }
 
         $newProject = new Project();
         $newProject->fill($form_data);
@@ -108,6 +118,18 @@ class ProjectController extends Controller
 
         $form_data['slug'] = $slug;
 
+        if ($request->hasFile('cover_image')) {
+
+
+            if ($project->cover_image) {
+                Storage::delete($project->cover_image);
+            }
+            //Genere un path di dove verrà salvata l'immagine nel progetto
+            $path = Storage::disk('public')->put('project_images', $request->cover_image);
+
+            $form_data['cover_image'] = $path;
+        }
+
         $project->update($form_data);
 
         return redirect()->route('admin.project.index');
@@ -121,6 +143,11 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+
+        if ($project->cover_image) {
+            Storage::delete($project->cover_image);
+        }   
+        
         $project->delete();
 
         return redirect()->route('admin.project.index');

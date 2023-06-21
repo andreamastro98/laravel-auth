@@ -26,8 +26,6 @@ Route::get('/', function () {
 
 Route::get('/projects', [ProjectPageController::class, 'index']);
 
-Route::get('/{slug}', [ProjectShowController::class, 'show'])->name('show');
-
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -51,4 +49,8 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
 
 });
 
+
+
 require __DIR__.'/auth.php';
+
+Route::get('/{project}', [ProjectShowController::class, 'show'])->name('show');

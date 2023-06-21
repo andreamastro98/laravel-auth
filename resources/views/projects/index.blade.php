@@ -31,7 +31,7 @@
                                                     <button onclick="return confirm('vuoi davvero cancellare il progetto?')" class="btn btn-danger" type="submit">Delete</button>
                                                 </form>
                                             </div>
-                                            <img class="img-fluid" src="https://dummyimage.com/300x400/343a40/6c757d" alt="..." />
+                                            <img class="img-fluid" src="{{ asset('/storage/' . $elem->cover_image)}}" alt="..." />
                                         </div>
                                     </div>
                                 </div>

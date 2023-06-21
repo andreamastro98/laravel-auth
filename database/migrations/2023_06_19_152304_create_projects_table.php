@@ -19,10 +19,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('title')->unique();
-            $table->string('customer');
-            $table->string('slug');
-            $table->text('description');
-            $table->string('cover_image');
+            $table->string('customer')->nullable();
+            $table->string('slug')->nullable();
+            $table->text('description')->nullable();
+            $table->string('cover_image')->nullable();
         });
     }
 

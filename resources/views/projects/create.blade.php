@@ -17,9 +17,9 @@
                                 <div class="form-group mb-3">
                                     <label for="project-title" class="form-label">Title</label>
                                     <input type="text" id="comic-title" name="title" class="form-control @error('title') is-invalid @enderror" placeholder="Inserisci title">
-                                    {{-- @error('title')
+                                    @error('title')
                                         <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror --}}
+                                    @enderror
                                 </div>
 
                                 <div class="form-group mb-3">
@@ -30,6 +30,11 @@
                                 <div class="form-group mb-3">
                                     <label for="project-description" class="form-label">Description</label>
                                     <textarea class="form-control" name="description" id="project-description" cols="30" rows="10"></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Default file input example</label>
+                                    <input class="form-control" type="file" id="formFile" name="cover_image">
                                 </div>
 
                                  <button type="submit" class="btn btn-primary mt-5">Create Project</button>

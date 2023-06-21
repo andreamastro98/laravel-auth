@@ -25,8 +25,11 @@ class UpdatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'max:100', Rule::unique('posts')->ignore($this->post)],
-            'description' => ['nullable']
+            'title' => ['required', 'max:100', Rule::unique('projects')->ignore($this->project)],
+            'customer' => ['nullable'],
+            'slug' => ['nullable'],
+            'description' => ['nullable'],
+            'cover_slug' => ['nullable']
         ];
     }
 }
