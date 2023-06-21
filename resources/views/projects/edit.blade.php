@@ -10,7 +10,7 @@
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-11 col-xl-9 col-xxl-8">
                             <!-- form project-->
-                            <form action="{{ route( 'admin.project.update', $project ) }}" method="POST" >
+                            <form action="{{ route( 'admin.project.update', $project ) }}" method="POST" enctype="multipart/form-data">
                             
                                 @csrf
                                 @method('PUT')

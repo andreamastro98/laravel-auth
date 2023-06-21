@@ -9,9 +9,11 @@ use App\Models\Admin\Project;
 
 class ProjectShowController extends Controller
 {
-    public function show($id){
+    public function show($slug){
 
-        $Project = Project::findOrFail($id);
+        // $project = Project::findOrFail($id);
+
+        $project = project::where('slug', $slug)->firstOrFail();
 
         return view('guest.show', compact('project'));
     }

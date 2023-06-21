@@ -18,7 +18,7 @@
                                     <h2 class="fw-bolder">{{$elem->title}}</h2>
                                     <p>{{$elem->description}}</p>
                                     <div> 
-                                        <a class="btn btn-primary" href="{{ route('show', $elem->id )}}">Show</a>
+                                        <a class="btn btn-primary" href="{{ route('show', $elem->slug )}}">Show</a>
                                     </div>
                                 </div>
                                 <img class="img-fluid" src="https://dummyimage.com/300x400/343a40/6c757d" alt="..." />

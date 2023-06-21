@@ -26,7 +26,8 @@ Route::get('/', function () {
 
 Route::get('/projects', [ProjectPageController::class, 'index']);
 
-Route::get('/show', [ProjectShowController::class, 'show'])->name('show');
+Route::get('/{slug}', [ProjectShowController::class, 'show'])->name('show');
+
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
