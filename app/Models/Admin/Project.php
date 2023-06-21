@@ -19,5 +19,6 @@ class Project extends Model
         'customer',
         'slug',
         'description',
+        'cover_image'
     ];
 }

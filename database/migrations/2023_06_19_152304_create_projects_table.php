@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('customer');
             $table->string('slug');
             $table->text('description');
+            $table->string('cover_image');
         });
     }
 

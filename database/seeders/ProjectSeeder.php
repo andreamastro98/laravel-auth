@@ -24,6 +24,7 @@ class ProjectSeeder extends Seeder
             $newProject->customer = $elem['customer'];
             $newProject->slug = Str::slug( $newProject->title,'-' );
             $newProject->description = $elem['description'];
+            $newProject->cover_image = $elem['cover_image'];
             $newProject->save();
 
         }
